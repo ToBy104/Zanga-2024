@@ -39,20 +39,16 @@ public class InGame_UI : MonoBehaviour
     }
 
 
-    public void Home()
-    {
-        SceneManager.LoadScene(0);
-    }
+    public void Home() => SceneManager.LoadScene(0);
 
 
-    public void Mute()
+    public void Mute() => BGSound.Pause();
+    public void UnMute() => BGSound.Play();
+
+    public void Next(int index) => SceneManager.LoadScene(index);
+
+    void da()
     {
-        BGSound.Pause();
-        //BGSound.Play();
-    }
-    public void UnMute()
-    {
-        //BGSound.Pause();
-        BGSound.Play();
+
     }
 }
