@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : Singleton<LevelManager>
 {
     private ItemSlot[] itemSlots;
+
+    [SerializeField]
+    private Sprite greenLef;
 
     private void Start() => itemSlots = FindObjectsByType<ItemSlot>(FindObjectsSortMode.None);
 
@@ -12,6 +16,10 @@ public class LevelManager : Singleton<LevelManager>
         if (IsAllLettersGood() && !temp)
         {
             PlayerPrefs.SetInt("Good Seed", PlayerPrefs.GetInt("Good Seed") + 1);
+            foreach (var slot in itemSlots)
+            {
+                slot.drop.GetComponent<Image>().sprite = greenLef;
+            }
             temp = true;
         }
         if (IsAllLettersbad() && !temp)

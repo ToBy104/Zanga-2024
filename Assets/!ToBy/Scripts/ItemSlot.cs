@@ -9,10 +9,12 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     [SerializeField]
     private int badLetters_Num;
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool isLettersGood;
-    //[HideInInspector]
+    [HideInInspector]
     public bool isLettersBad;
+
+    public GameObject drop;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -28,16 +30,22 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             {
                 isLettersGood = true;
                 isLettersBad  = true;
+
+                drop = eventData.pointerDrag;
             }
             else if (letterIndex == goodLetters_Num)
             {
                 isLettersGood = true;
                 isLettersBad  = false;
+
+                drop = eventData.pointerDrag;
             }
             else if (letterIndex == badLetters_Num)
             {
                 isLettersBad  = true;
                 isLettersGood = false;
+
+                drop = eventData.pointerDrag;
             }
             else
             {
